@@ -16,8 +16,10 @@ export default function ReadingCalendar() {
   const { data: sessions = [], isLoading } = useQuery<ReadingSession[]>({
     queryKey: ["/api/reading-sessions"],
     queryFn: async () => {
-      const response = await fetch("/api/reading-sessions");
-      return response.json();
+      const response = await fetch("https://book-be.onrender.com/api/reading-sessions", {
+  credentials: "include"
+});
+return response.json();
     }
   });
 
