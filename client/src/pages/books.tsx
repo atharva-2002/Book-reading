@@ -15,13 +15,19 @@ export default function Books() {
   const [activeTab, setActiveTab] = useState("all");
 
   const { data: allBooks = [], isLoading } = useQuery<BookWithUserData[]>({
-    queryKey: ["/api/user/books", activeTab],
-    queryFn: async () => {
-      const endpoint = activeTab === "all" ? "/api/user/books" : `/api/user/books?status=${activeTab}`;
-      const response = await fetch(endpoint);
-      return response.json();
-    }
-  });
+  queryKey: ["/api/user/books", activeTab],
+  queryFn: async () => {
+    const endpoint =
+      activeTab === "all"
+        ? "https://book-reading-hy4n.onrender.com/api/user/books"
+        : `https://book-reading-hy4n.onrender.com/api/user/books?status=${activeTab}`;
+
+    const response = await fetch(endpoint, {
+      credentials: "include", // Add this if your backend uses cookies/sessions
+    });
+    return response.json();
+  }
+});
 
   const filteredBooks = allBooks.filter(book =>
     book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
