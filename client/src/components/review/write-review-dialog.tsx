@@ -35,14 +35,14 @@ export default function WriteReviewDialog({ children }: WriteReviewDialogProps) 
   const { data: userBooks = [] } = useQuery<BookWithUserData[]>({
     queryKey: ["/api/user/books"],
     queryFn: async () => {
-      const response = await fetch("/api/user/books");
+      const response = await fetch("https://book-reading-hy4n.onrender.com/api/user/books");
       return response.json();
     }
   });
 
   const createReviewMutation = useMutation({
     mutationFn: async () => {
-      const response = await apiRequest("POST", "/api/reviews", {
+      const response = await apiRequest("POST", "https://book-reading-hy4n.onrender.com/api/reviews", {
         bookId: parseInt(selectedBookId),
         title: title || undefined,
         content,
