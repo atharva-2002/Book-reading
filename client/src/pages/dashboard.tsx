@@ -14,7 +14,7 @@ export default function Dashboard() {
   const { data: currentlyReading = [], isLoading: loadingBooks } = useQuery<BookWithUserData[]>({
     queryKey: ["/api/user/books"],
     queryFn: async () => {
-      const response = await fetch("/api/user/books?status=reading");
+      const response = await fetch("https://book-be.onrender.com/api/user/books?status=reading");
       return response.json();
     }
   });
@@ -22,7 +22,7 @@ export default function Dashboard() {
   const { data: stats, isLoading: loadingStats } = useQuery<ReadingStats>({
     queryKey: ["/api/user/stats"],
     queryFn: async () => {
-      const response = await fetch("/api/user/stats");
+      const response = await fetch("https://book-be.onrender.com/api/user/stats");
       return response.json();
     }
   });
@@ -30,7 +30,7 @@ export default function Dashboard() {
   const { data: recentReviews = [], isLoading: loadingReviews } = useQuery<ReviewWithUser[]>({
     queryKey: ["/api/reviews"],
     queryFn: async () => {
-      const response = await fetch("/api/reviews?limit=2");
+      const response = await fetch("https://book-be.onrender.com/api/reviews?limit=2");
       return response.json();
     }
   });
