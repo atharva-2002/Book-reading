@@ -22,7 +22,7 @@ export default function ProgressTracker({ book }: ProgressTrackerProps) {
     mutationFn: async (newPage: number) => {
       const response = await apiRequest(
         "PUT",
-        `/api/user/books/${book.id}`,
+        `https://book-reading-hy4n.onrender.com/api/user/books/${book.id}`,
         { currentPage: newPage }
       );
       return response.json();
