@@ -9,7 +9,7 @@ export default function RecommendationGrid() {
   const { data: recommendations = [], isLoading, refetch } = useQuery<RecommendationWithMatch[]>({
     queryKey: ["/api/recommendations"],
     queryFn: async () => {
-      const response = await fetch("/api/recommendations?limit=6");
+      const response = await fetch("https://book-reading-hy4n.onrender.com/api/recommendations?limit=6");
       return response.json();
     }
   });
