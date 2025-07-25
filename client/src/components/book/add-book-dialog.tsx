@@ -36,7 +36,7 @@ export default function AddBookDialog({ children }: AddBookDialogProps) {
   const createBookMutation = useMutation({
     mutationFn: async (bookData: any) => {
       // First create the book
-      const bookResponse = await apiRequest("POST", "/api/books", {
+      const bookResponse = await apiRequest("POST", "https://book-reading-hy4n.onrender.com/api/books", {
         title,
         author,
         isbn: isbn || undefined,
@@ -49,7 +49,7 @@ export default function AddBookDialog({ children }: AddBookDialogProps) {
       const book = await bookResponse.json();
       
       // Then add it to user's library
-      const userBookResponse = await apiRequest("POST", "/api/user/books", {
+      const userBookResponse = await apiRequest("POST", "https://book-reading-hy4n.onrender.com/api/user/books", {
         bookId: book.id,
         status,
         currentPage: 0,
