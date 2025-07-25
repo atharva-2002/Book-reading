@@ -15,7 +15,7 @@ export default function Reviews() {
   const { data: reviews = [], isLoading } = useQuery<ReviewWithUser[]>({
     queryKey: ["/api/reviews"],
     queryFn: async () => {
-      const response = await fetch("/api/reviews?limit=50");
+      const response = await fetch("https://book-reading-hy4n.onrender.com/api/reviews?limit=50");
       return response.json();
     }
   });
